@@ -27,4 +27,30 @@ const movieSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Movie', movieSchema);
+const reviewSchema = new mongoose.Schema({
+    movieId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Movie",
+        required: true
+    },
+    reviewerName: {
+        type: String        
+    },
+    rating: {
+        type: Number, 
+        min: 1,
+        max: 10
+    }, 
+    comment: {
+        type: String
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
+})
+
+const Movie = mongoose.model('Movie', movieSchema);
+const Review = mongoose.model('Review', reviewSchema);
+
+module.exports = { Movie, Review };

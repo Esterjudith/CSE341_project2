@@ -7,7 +7,7 @@ const getMovies = async (req, res) => {
         const movies = await Movie.find();       
         res.status(200).json(movies);
     } catch(error) {
-        res.status(500).json({message: error.messageqq});
+        res.status(500).json({message: error.message});
     }
 }
 
@@ -76,7 +76,7 @@ const updateMovie = async (req, res) => {
         if(!movie){
             return res.status(404).json({message: 'Contact not found'});
         }
-        res.status(200).json({message: 'Contact successfully updated', movie})
+        res.status(200).json({message: 'Movie successfully updated', movie})
         
     } catch(error){
         res.status(500).json({message: error.message});

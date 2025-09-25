@@ -2,18 +2,10 @@ require('dotenv').config();
 const express = require("express");
 const app = express();
 const route = require('./routes/index');
-const moviesRouter = require('./routes/moviesRouter')
+const moviesRouter = require('./routes/moviesRouter');
+const reviewsRouter = require('./routes/reviewRouter');
 const cors = require('cors');
 const connectDB = require('./DB/connection');
-const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger.json');
-
-
-// var options = {
-//   explorer: true
-// };
-
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
 app.use(express.json());
@@ -22,6 +14,7 @@ app.use(cors());
 //Routes
 app.use('/', route);
 app.use('/movies', moviesRouter);
+app.use('/reviews', reviewsRouter)
 
 app.use((req, res, next) => {
   res.status(404).json({ message: "Sorry, we couldn't find that resource." });

@@ -7,7 +7,7 @@
   },
   "host": "cse341-project2-auye.onrender.com",
   "basePath": "/",
-  "schemes": [    
+  "schemes": [  
     "https"
   ],
   "paths": {
@@ -31,10 +31,56 @@
         }
       },
       "post": {
+        "tags": [
+          "Movie"
+        ],
         "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Movie data to update",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Movie example"
+                },
+                "director": {
+                  "type": "string",
+                  "example": "Director example"
+                },
+                "releaseYear": {
+                  "type": "number",
+                  "example": 1970
+                },
+                "genre": {
+                  "type": "string",
+                  "example": "Drama"
+                },
+                "rating": {
+                  "type": "number",
+                  "example": 10
+                },
+                "duration": {
+                  "type": "number",
+                  "example": 120
+                },
+                "watched": {
+                  "type": "boolean",
+                  "example": true
+                }
+              }
+            }
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -57,6 +103,69 @@
         }
       },
       "put": {
+        "tags": [
+          "Movie"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Movie data to update",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Movie example"
+                },
+                "director": {
+                  "type": "string",
+                  "example": "Director example"
+                },
+                "releaseYear": {
+                  "type": "number",
+                  "example": 1970
+                },
+                "genre": {
+                  "type": "string",
+                  "example": "Drama"
+                },
+                "rating": {
+                  "type": "number",
+                  "example": 10
+                },
+                "duration": {
+                  "type": "number",
+                  "example": 120
+                },
+                "watched": {
+                  "type": "boolean",
+                  "example": true
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
         "description": "",
         "parameters": [
           {
@@ -71,8 +180,71 @@
             "description": ""
           }
         }
+      }
+    },
+    "/review/": {
+      "get": {
+        "tags": [
+          "Reviews"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       },
-      "delete": {
+      "post": {
+        "tags": [
+          "Review"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Movie data to update",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "movieId": {
+                  "type": "string",
+                  "example": "68d3841f57d0f5f1db5518f3"
+                },
+                "reviewerName": {
+                  "type": "string",
+                  "example": "Sarah Thompson"
+                },
+                "rating": {
+                  "type": "number",
+                  "example": 8
+                },
+                "comment": {
+                  "type": "string",
+                  "example": "Great pacing and visuals, but a little too long."
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/review/{id}": {
+      "get": {
+        "tags": [
+          "Review"
+        ],
         "description": "",
         "parameters": [
           {
@@ -82,6 +254,73 @@
             "type": "string"
           }
         ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Review"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Review data to update",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "movieId": {
+                  "type": "string",
+                  "example": "68d3841f57d0f5f1db5518f3"
+                },
+                "reviewerName": {
+                  "type": "string",
+                  "example": "Sarah Thompson"
+                },
+                "rating": {
+                  "type": "number",
+                  "example": 8
+                },
+                "comment": {
+                  "type": "string",
+                  "example": "Great pacing and visuals, but a little too long."
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api-docs": {
+      "get": {
+        "description": "",
         "responses": {
           "default": {
             "description": ""
