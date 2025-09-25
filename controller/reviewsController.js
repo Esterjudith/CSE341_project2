@@ -74,4 +74,17 @@ const updateReview = async (req, res, next) => {
   }
 }
 
-module.exports = {getAllReviews, createReview, getReviewById, updateReview};
+const deleteReview = async (req, res) => {
+    //#swagger.tags=['Review']
+    try {
+        const { id } = req.params;
+        const review = await Review.findByIdAndDelete(id);
+        review ?  res.status(200).json({message:'Contact deleted successfully', review}): 
+        res.status(404).json({message:'Review not found'})
+       
+    }catch(error){
+    res.status(500).json({message: error.message});
+    }
+}
+
+module.exports = {getAllReviews, createReview, getReviewById, updateReview, deleteReview};

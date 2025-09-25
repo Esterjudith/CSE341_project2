@@ -7,7 +7,7 @@
   },
   "host": "cse341-project2-auye.onrender.com",
   "basePath": "/",
-  "schemes": [  
+  "schemes": [    
     "https"
   ],
   "paths": {
@@ -216,7 +216,7 @@
                 },
                 "reviewerName": {
                   "type": "string",
-                  "example": "Sarah Thompson"
+                  "example": "Name of reviewer"
                 },
                 "rating": {
                   "type": "number",
@@ -224,7 +224,7 @@
                 },
                 "comment": {
                   "type": "string",
-                  "example": "Great pacing and visuals, but a little too long."
+                  "example": "example comment."
                 }
               }
             }
@@ -291,7 +291,7 @@
                 },
                 "reviewerName": {
                   "type": "string",
-                  "example": "Sarah Thompson"
+                  "example": "Name of reviewer"
                 },
                 "rating": {
                   "type": "number",
@@ -299,10 +299,35 @@
                 },
                 "comment": {
                   "type": "string",
-                  "example": "Great pacing and visuals, but a little too long."
+                  "example": "example comment."
                 }
               }
             }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Review"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
