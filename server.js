@@ -2,8 +2,6 @@ require('dotenv').config();
 const express = require("express");
 const app = express();
 const route = require('./routes/index');
-const moviesRouter = require('./routes/moviesRouter');
-const reviewsRouter = require('./routes/reviewRouter');
 const cors = require('cors');
 const connectDB = require('./DB/connection');
 const bodyParser = require('body-parser')

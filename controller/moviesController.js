@@ -28,7 +28,6 @@ const createMovie = async (req,res) => {
         }
   } */
   try {
-
     const movie = new Movie(req.body);
     await movie.save();
     res.status(201).json(movie);
